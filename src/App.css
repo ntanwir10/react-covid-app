@@ -49,6 +49,21 @@ body {
   margin-top: 1rem;
 }
 
+.flags {
+  width: 6%;
+  padding: 0.5em;
+}
+
+.MuiPopover-paper {
+  width: 15%;
+  left: 61em !important;
+}
+
+.MuiSelect-outlined.MuiSelect-outlined {
+  display: inline-flex;
+  align-items: center;
+}
+
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
