@@ -10,6 +10,7 @@ import {
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
+import LineGraph from "./LineGraph";
 import { sortData, prettyPrintStat } from "./util";
 
 import "./App.css";
@@ -20,6 +21,7 @@ function App() {
   const [countryInfo, setCountryInfo] = useState({});
   const [mapCountries, setMapCountries] = useState([]);
   const [tableData, setTableData] = useState([]);
+  const [casesType, setCasesType] = useState("cases");
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -82,7 +84,11 @@ function App() {
               <MenuItem value="worldwide">Worldwide</MenuItem>
               {countries.map((country) => (
                 <MenuItem value={country.value}>
-                  <img className="img-fluid flags" src={country.flag} alt="country flag" />
+                  <img
+                    className="img-fluid flags"
+                    src={country.flag}
+                    alt="country flag"
+                  />
                   {country.name}
                 </MenuItem>
               ))}
@@ -91,43 +97,43 @@ function App() {
         </div>
         <div className="app__stats">
           <InfoBox
-            // onClick={(e) => setCasesType("cases")}
+            onClick={(e) => setCasesType("cases")}
             title="Coronavirus Cases"
-            // isRed
-            // active={casesType === "cases"}
+            isRed
+            active={casesType === "cases"}
             cases={countryInfo.todayCases}
             total={countryInfo.cases}
           />
           <InfoBox
-            // onClick={(e) => setCasesType("recovered")}
+            onClick={(e) => setCasesType("recovered")}
             title="Recovered"
-            // active={casesType === "recovered"}
+            active={casesType === "recovered"}
             cases={countryInfo.todayRecovered}
             total={countryInfo.recovered}
           />
           <InfoBox
-            // onClick={(e) => setCasesType("deaths")}
+            onClick={(e) => setCasesType("deaths")}
             title="Deaths"
-            // isRed
-            // active={casesType === "deaths"}
+            isRed
+            active={casesType === "deaths"}
             cases={countryInfo.todayDeaths}
             total={countryInfo.deaths}
           />
         </div>
-        <Map
+        {/* <Map
         // countries={mapCountries}
         // casesType={casesType}
         // center={mapCenter}
         // zoom={mapZoom}
-        />
+        /> */}
       </div>
       <Card className="app__right">
         <CardContent>
           <div className="app__information">
             <h3>Live Cases by Country</h3>
             <Table countries={tableData} />
-            {/* <h3>Worldwide new {casesType}</h3>
-            <LineGraph casesType={casesType} /> */}
+            <h3>Worldwide new {casesType}</h3>
+            <LineGraph casesType={casesType} />
           </div>
         </CardContent>
       </Card>
