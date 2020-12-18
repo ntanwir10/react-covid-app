@@ -64,6 +64,7 @@ function App() {
       .then((data) => {
         setInputCountry(countryCode);
         setCountryInfo(data);
+        console.log("onCountryChange dataaaa", data);
         setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
         setMapZoom(4);
       });
