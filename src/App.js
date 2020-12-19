@@ -64,8 +64,9 @@ function App() {
       .then((data) => {
         setInputCountry(countryCode);
         setCountryInfo(data);
-        console.log("onCountryChange dataaaa", data);
-        if (countryCode !== "worldwide" ) setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        if (countryCode !== "worldwide")
+          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        else setMapCenter({ lat: 34.80746, lng: -40.4796 });
         setMapZoom(4);
       });
   };

@@ -5,10 +5,10 @@ import numeral from "numeral";
 function Table({ countries }) {
   return (
     <div className="table">
-      {countries.map((country) => (
+      {countries.map((country, key) => (
         <tr>
           <td>{country.country}</td>
-          <td>
+          <td key={key}>
             <strong>{numeral(country.cases).format("0,0")}</strong>
           </td>
         </tr>
